@@ -135,4 +135,19 @@
   <data name="tsmiViewModeThumbnails.Text" xml:space="preserve">
     <value>Миниатюры</value>
   </data>
+  <data name="tsddbMaxImageLimit.Text" xml:space="preserve">
+    <value>Ограничение на количество  изображений</value>
+  </data>
+  <data name="tsmiMaxImageLimit0.Text" xml:space="preserve">
+    <value>Без ограничений</value>
+  </data>
+  <data name="tsmiMaxImageLimit1000.Text" xml:space="preserve">
+    <value>Последние 1000</value>
+  </data>
+  <data name="tsmiMaxImageLimit250.Text" xml:space="preserve">
+    <value>Последние 250</value>
+  </data>
+  <data name="tsmiMaxImageLimit100.Text" xml:space="preserve">
+    <value>Последние 100</value>
+  </data>
 </root>
