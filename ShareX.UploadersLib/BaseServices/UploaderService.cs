@@ -34,13 +34,10 @@ namespace ShareX.UploadersLib
     {
         public abstract T EnumValue { get; }
 
-        public string ServiceName
-        {
-            get
-            {
-                return ((Enum)(object)EnumValue).GetDescription();
-            }
-        }
+        // Unique identifier
+        public string ServiceIdentifier => EnumValue.ToString();
+
+        public string ServiceName => ((Enum)(object)EnumValue).GetDescription();
 
         public virtual Icon ServiceIcon { get; }
 
