@@ -24,58 +24,51 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
-using System;
-using System.Diagnostics;
 using System.Drawing;
 
 namespace ShareX.ScreenCaptureLib
 {
-    internal class ColorBlinkAnimation
+    internal class ColorBlinkAnimation : BaseAnimation
     {
-        public float Max { get; set; }
-        public float Min { get; set; }
-        public float Current { get; set; }
-        public float Speed { get; set; }
         public Color FromColor { get; set; }
         public Color ToColor { get; set; }
+        public float Min { get; set; }
+        public float Max { get; set; }
+        public float Speed { get; set; }
 
-        private Stopwatch timer;
-        private TimeSpan previousTime;
+        private float current;
         private int direction;
 
         public ColorBlinkAnimation()
         {
-            Max = 1;
-            Min = 0;
-            Current = Min;
-            Speed = 0.75f;
             FromColor = Color.FromArgb(30, 30, 30);
             ToColor = Color.FromArgb(100, 100, 100);
+            Min = 0;
+            Max = 1;
+            Speed = 0.75f;
 
-            timer = Stopwatch.StartNew();
+            current = Min;
             direction = 1;
         }
 
         public Color GetColor()
         {
-            TimeSpan totalElapsed = timer.Elapsed;
-            TimeSpan elapsed = totalElapsed - previousTime;
-            previousTime = totalElapsed;
+            Update();
 
-            Current += (float)elapsed.TotalSeconds * Speed * direction;
+            current += (float)Elapsed.TotalSeconds * Speed * direction;
 
-            if (Current > Max)
+            if (current > Max)
             {
-                Current = Max; //Max - (Current - Max);
+                current = Max; //Max - (Current - Max);
                 direction = -1;
             }
-            else if (Current < Min)
+            else if (current < Min)
             {
-                Current = Min; //Min + (Min - Current);
+                current = Min; //Min + (Min - Current);
                 direction = 1;
             }
 
-            return ColorHelpers.Lerp(FromColor, ToColor, Current);
+            return ColorHelpers.Lerp(FromColor, ToColor, current);
         }
     }
 }
