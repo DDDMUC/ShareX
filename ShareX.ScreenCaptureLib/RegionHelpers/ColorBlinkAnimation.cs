@@ -36,6 +36,8 @@ namespace ShareX.ScreenCaptureLib
         public float Max { get; set; }
         public float Speed { get; set; }
 
+        public Color CurrentColor { get; set; }
+
         private float current;
         private int direction;
 
@@ -51,9 +53,9 @@ namespace ShareX.ScreenCaptureLib
             direction = 1;
         }
 
-        public Color GetColor()
+        public override bool Update()
         {
-            Update();
+            base.Update();
 
             current += (float)Elapsed.TotalSeconds * Speed * direction;
 
@@ -68,7 +70,9 @@ namespace ShareX.ScreenCaptureLib
                 direction = 1;
             }
 
-            return ColorHelpers.Lerp(FromColor, ToColor, current);
+            CurrentColor = ColorHelpers.Lerp(FromColor, ToColor, current);
+
+            return IsActive;
         }
     }
 }
