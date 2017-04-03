@@ -55,22 +55,25 @@ namespace ShareX.ScreenCaptureLib
 
         public override bool Update()
         {
-            base.Update();
-
-            current += (float)Elapsed.TotalSeconds * Speed * direction;
-
-            if (current > Max)
+            if (IsActive)
             {
-                current = Max; //Max - (Current - Max);
-                direction = -1;
-            }
-            else if (current < Min)
-            {
-                current = Min; //Min + (Min - Current);
-                direction = 1;
-            }
+                base.Update();
 
-            CurrentColor = ColorHelpers.Lerp(FromColor, ToColor, current);
+                current += (float)Elapsed.TotalSeconds * Speed * direction;
+
+                if (current > Max)
+                {
+                    current = Max; //Max - (Current - Max);
+                    direction = -1;
+                }
+                else if (current < Min)
+                {
+                    current = Min; //Min + (Min - Current);
+                    direction = 1;
+                }
+
+                CurrentColor = ColorHelpers.Lerp(FromColor, ToColor, current);
+            }
 
             return IsActive;
         }
