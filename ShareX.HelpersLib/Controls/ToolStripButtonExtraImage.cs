@@ -49,7 +49,7 @@ namespace ShareX.HelpersLib
 
             if (ShowExtraImage && ExtraImage != null)
             {
-                e.Graphics.DrawImage(ExtraImage, new Point(e.ClipRectangle.Right - ExtraImage.Width - extraImagePadding, extraImagePadding));
+                e.Graphics.DrawImage(ExtraImage, new Point(Width - ExtraImage.Width - extraImagePadding, extraImagePadding));
             }
         }
     }
