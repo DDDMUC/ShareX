@@ -48,10 +48,10 @@ namespace ShareX.ScreenCaptureLib
         public CanvasSizeForm(Padding canvas) : this()
         {
             Canvas = canvas;
-            nudLeft.Value = canvas.Left;
-            nudTop.Value = canvas.Top;
-            nudRight.Value = canvas.Right;
-            nudBottom.Value = canvas.Bottom;
+            nudLeft.SetValue(canvas.Left);
+            nudTop.SetValue(canvas.Top);
+            nudRight.SetValue(canvas.Right);
+            nudBottom.SetValue(canvas.Bottom);
         }
 
         private void CanvasSizeForm_Shown(object sender, EventArgs e)
