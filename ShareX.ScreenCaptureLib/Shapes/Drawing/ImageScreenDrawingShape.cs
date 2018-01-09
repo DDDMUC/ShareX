@@ -24,55 +24,12 @@
 #endregion License Information (GPL v3)
 
 using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace ShareX.ScreenCaptureLib
 {
-    public class ImageScreenDrawingShape : BaseDrawingShape
+    public class ImageScreenDrawingShape : ImageDrawingShape
     {
         public override ShapeType ShapeType { get; } = ShapeType.DrawingImageScreen;
-
-        public Image Image { get; private set; }
-        public ImageEditorInterpolationMode ImageInterpolationMode { get; private set; }
-
-        public override void OnConfigLoad()
-        {
-            ImageInterpolationMode = AnnotationOptions.ImageInterpolationMode;
-        }
-
-        public override void OnConfigSave()
-        {
-            AnnotationOptions.ImageInterpolationMode = ImageInterpolationMode;
-        }
-
-        public override void OnDraw(Graphics g)
-        {
-            if (Image == null)
-            {
-                if (IsValidShape)
-                {
-                    Manager.DrawRegionArea(g, RectangleInsideCanvas, true);
-                }
-            }
-            else
-            {
-                DrawImage(g);
-            }
-        }
-
-        protected void DrawImage(Graphics g)
-        {
-            if (Image != null)
-            {
-                g.PixelOffsetMode = PixelOffsetMode.Half;
-                g.InterpolationMode = Manager.GetInterpolationMode(ImageInterpolationMode);
-
-                g.DrawImage(Image, Rectangle);
-
-                g.PixelOffsetMode = PixelOffsetMode.Default;
-                g.InterpolationMode = InterpolationMode.Bilinear;
-            }
-        }
 
         public override void OnCreated()
         {
@@ -92,11 +49,18 @@ namespace ShareX.ScreenCaptureLib
             }
         }
 
-        public override void Dispose()
+        public override void OnDraw(Graphics g)
         {
-            if (Image != null)
+            if (Image == null)
             {
-                Image.Dispose();
+                if (IsValidShape)
+                {
+                    Manager.DrawRegionArea(g, RectangleInsideCanvas, true);
+                }
+            }
+            else
+            {
+                base.OnDraw(g);
             }
         }
     }
