@@ -144,4 +144,10 @@
   <data name="tpEncode.Text" xml:space="preserve">
     <value>인코드</value>
   </data>
+  <data name="tsmiUpload.Text" xml:space="preserve">
+    <value>이미지 업로드</value>
+  </data>
+  <data name="tsmiDecode.Text" xml:space="preserve">
+    <value>디코드</value>
+  </data>
 </root>
