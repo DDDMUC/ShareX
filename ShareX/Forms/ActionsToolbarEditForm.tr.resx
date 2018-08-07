@@ -123,4 +123,7 @@
   <data name="btnRemove.Text" xml:space="preserve">
     <value>Kaldır</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>ShareX - Aksiyonlar araç çubuğunu düzenle</value>
+  </data>
 </root>
