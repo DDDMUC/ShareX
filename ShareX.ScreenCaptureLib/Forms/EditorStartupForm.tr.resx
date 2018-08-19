@@ -120,4 +120,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>ShareX - Resim düzenleyici</value>
   </data>
+  <data name="btnOpenImageFile.Text" xml:space="preserve">
+    <value>Resim dosyası aç...</value>
+  </data>
+  <data name="btnCreateNewImage.Text" xml:space="preserve">
+    <value>Yeni resim oluştur...</value>
+  </data>
+  <data name="btnLoadImageFromClipboard.Text" xml:space="preserve">
+    <value>Panodan resim yükle</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>İptal</value>
+  </data>
 </root>
