@@ -124,7 +124,7 @@
     <value>Бажаний DNS-сервер:</value>
   </data>
   <data name="lblAlternateDNS.Text" xml:space="preserve">
-    <value>Альтернативний DNS-сервер:</value>
+    <value>Альтернативний DNS:</value>
   </data>
   <data name="btnSave.Text" xml:space="preserve">
     <value>Застосувати</value>
