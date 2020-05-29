@@ -31,7 +31,7 @@ using System.Linq;
 
 namespace ShareX.HelpersLib
 {
-    internal class WritablePropertiesOnlyResolver : DefaultContractResolver
+    public class WritablePropertiesOnlyResolver : DefaultContractResolver
     {
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
         {
