@@ -124,7 +124,7 @@
     <value>Düzenle</value>
   </data>
   <data name="btnRemove.Text" xml:space="preserve">
-    <value>Sil</value>
+    <value>Kaldır</value>
   </data>
   <data name="btnReset.Text" xml:space="preserve">
     <value>Varsayılan ayarlara dön...</value>
