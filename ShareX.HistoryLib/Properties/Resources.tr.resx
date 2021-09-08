@@ -225,4 +225,10 @@
   <data name="HistoryStats_YearlyUsages" xml:space="preserve">
     <value>Yıllık kullanım:</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Toplam</value>
+  </data>
+  <data name="Filtered" xml:space="preserve">
+    <value>Filtrelenmiş</value>
+  </data>
 </root>
