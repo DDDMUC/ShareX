@@ -231,4 +231,10 @@
   <data name="Filtered" xml:space="preserve">
     <value>Отфильтровано</value>
   </data>
+  <data name="ProcessNames" xml:space="preserve">
+    <value>Имена процессов:</value>
+  </data>
+  <data name="HistoryStats" xml:space="preserve">
+    <value>Статистика истории</value>
+  </data>
 </root>
