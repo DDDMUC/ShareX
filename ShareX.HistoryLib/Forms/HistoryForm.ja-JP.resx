@@ -168,4 +168,7 @@
   <data name="tslSearch.Text" xml:space="preserve">
     <value>検索:</value>
   </data>
+  <data name="tsbShowStats.Text" xml:space="preserve">
+    <value>使用履歴を表示...</value>
+  </data>
 </root>
