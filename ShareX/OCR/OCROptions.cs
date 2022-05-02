@@ -23,6 +23,8 @@
 
 #endregion License Information (GPL v3)
 
+using System.Collections.Generic;
+
 namespace ShareX
 {
     public class OCROptions
@@ -31,5 +33,11 @@ namespace ShareX
         public float ScaleFactor { get; set; } = 2f;
         public bool Silent { get; set; } = false;
         public bool AutoCopy { get; set; } = false;
+        public List<ServiceLink> ServiceLinks { get; set; } = new List<ServiceLink>()
+        {
+            new ServiceLink("Google Translate", "https://translate.google.com/?sl=auto&tl=en&text={0}&op=translate"),
+            new ServiceLink("Google Search", "https://www.google.com/search?q={0}"),
+            new ServiceLink("Bing", "https://www.bing.com/search?q={0}")
+        };
     }
 }
