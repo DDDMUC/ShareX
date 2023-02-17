@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>ShareX - בוחר מעברי צבעים</value>
+    <value>ShareX - בוחר גרדיאנט</value>
   </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>הוסף</value>
@@ -142,19 +142,19 @@
     <value>צבע</value>
   </data>
   <data name="chGradient.Text" xml:space="preserve">
-    <value>מעבר צבע</value>
+    <value>גרדיאנט</value>
   </data>
   <data name="chLocation.Text" xml:space="preserve">
     <value>מיקום</value>
   </data>
   <data name="lblGradientType.Text" xml:space="preserve">
-    <value>סוג מעבר צבע:</value>
+    <value>סוג גרדיאנט:</value>
   </data>
   <data name="lblLocation.Text" xml:space="preserve">
     <value>מיקום:</value>
   </data>
   <data name="lblPresets.Text" xml:space="preserve">
-    <value>הגדרות קבועות מראש:</value>
+    <value>הגדרות תצורה:</value>
   </data>
   <data name="lblPreview.Text" xml:space="preserve">
     <value>תצוגה מקדימה:</value>
