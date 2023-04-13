@@ -30,7 +30,7 @@ namespace ShareX.UploadersLib
 {
     // Example: {prompt}
     // Example: {prompt:title}
-    // Example: {prompt:title|default value}
+    // Example: {prompt:title|default text}
     internal class CustomUploaderFunctionPrompt : CustomUploaderFunction
     {
         public override string Name { get; } = "prompt";
@@ -38,7 +38,7 @@ namespace ShareX.UploadersLib
         public override string Call(ShareXCustomUploaderSyntaxParser parser, string[] parameters)
         {
             string title = "ShareX - Prompt";
-            string defaultValue = "";
+            string defaultText = "";
 
             if (parameters.Length > 0)
             {
@@ -46,11 +46,11 @@ namespace ShareX.UploadersLib
 
                 if (parameters.Length > 1)
                 {
-                    defaultValue = parameters[1];
+                    defaultText = parameters[1];
                 }
             }
 
-            using (InputBox inputBox = new InputBox(title, defaultValue))
+            using (InputBox inputBox = new InputBox(title, defaultText))
             {
                 if (inputBox.ShowDialog() == DialogResult.OK)
                 {
@@ -58,7 +58,7 @@ namespace ShareX.UploadersLib
                 }
             }
 
-            return defaultValue;
+            return defaultText;
         }
     }
 }
