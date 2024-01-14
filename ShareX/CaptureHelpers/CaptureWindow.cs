@@ -31,7 +31,11 @@ namespace ShareX
 {
     public class CaptureWindow : CaptureBase
     {
-        public IntPtr WindowHandle { get; private set; }
+        public IntPtr WindowHandle { get; protected set; }
+
+        public CaptureWindow()
+        {
+        }
 
         public CaptureWindow(IntPtr windowHandle)
         {
