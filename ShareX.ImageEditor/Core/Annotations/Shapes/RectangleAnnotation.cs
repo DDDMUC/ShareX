@@ -34,6 +34,8 @@ public partial class RectangleAnnotation : Annotation
 {
     public override AnnotationCategory Category => AnnotationCategory.Shapes;
 
+    public BorderStyle BorderStyle { get; set; } = BorderStyle.Solid;
+
     public int CornerRadius { get; set; }
 
     public RectangleAnnotation()
