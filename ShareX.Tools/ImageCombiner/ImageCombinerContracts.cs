@@ -38,16 +38,7 @@ public enum ImageCombinerAlignment
     RightOrBottom
 }
 
-public sealed class ImageCombinerSettings
-{
-    public ImageCombinerOrientation Orientation { get; set; } = ImageCombinerOrientation.Vertical;
-    public ImageCombinerAlignment Alignment { get; set; }
-    public int Space { get; set; }
-    public int WrapAfter { get; set; }
-    public bool AutoFillBackground { get; set; } = true;
-}
-
-public sealed record ImageCombineRequest(IReadOnlyList<string> ImageFiles, ImageCombinerSettings Settings);
+public sealed record ImageCombineRequest(IReadOnlyList<string> ImageFiles, ImageCombinerOptions Options);
 
 public sealed class ImageCombinerServices
 {
