@@ -82,23 +82,15 @@ public partial class URLUploadWindow : Window
     private void UpdateValidation()
     {
         string url = URLTextBox.Text?.Trim() ?? string.Empty;
-        bool isValid = IsSupportedURL(url);
+        bool isValid = URLInputValidation.IsSupported(url);
         UploadButton.IsEnabled = isValid;
         ValidationText.IsVisible = url.Length > 0 && !isValid;
-    }
-
-    private static bool IsSupportedURL(string url)
-    {
-        return Uri.TryCreate(url, UriKind.Absolute, out Uri? uri) &&
-            (uri.Scheme == Uri.UriSchemeHttp ||
-             uri.Scheme == Uri.UriSchemeHttps ||
-             uri.Scheme == Uri.UriSchemeFtp);
     }
 
     private void OnUploadClick(object? sender, RoutedEventArgs e)
     {
         string url = URLTextBox.Text?.Trim() ?? string.Empty;
-        if (!IsSupportedURL(url))
+        if (!URLInputValidation.IsSupported(url))
         {
             UpdateValidation();
             return;
