@@ -69,14 +69,14 @@
                         Orientation="Horizontal"
                         Spacing="7"
                         HorizontalAlignment="Right">
-                <Button Classes="compact"
-                        Content="Cancel"
-                        IsCancel="True"
-                        Click="OnCancelClick"/>
                 <Button Classes="compact primary"
                         Content="Send"
                         IsDefault="True"
                         Click="OnSendClick"/>
+                <Button Classes="compact"
+                        Content="Cancel"
+                        IsCancel="True"
+                        Click="OnCancelClick"/>
             </StackPanel>
         </Grid>
     </ThemeVariantScope>
