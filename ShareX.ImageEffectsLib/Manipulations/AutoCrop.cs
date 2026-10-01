@@ -26,15 +26,14 @@
 using ShareX.HelpersLib;
 using SkiaSharp;
 using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace ShareX.ImageEffectsLib
 {
     [Description("Auto crop")]
     internal class AutoCrop : ImageEffect
     {
-        [DefaultValue(AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right)]
-        public AnchorStyles Sides { get; set; }
+        [DefaultValue(ImageSides.Top | ImageSides.Bottom | ImageSides.Left | ImageSides.Right)]
+        public ImageSides Sides { get; set; }
 
         [DefaultValue(0)]
         public int Padding { get; set; }
