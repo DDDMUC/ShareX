@@ -15,9 +15,10 @@
 #define MyAppFileName MyAppName + ".exe"
 #define MyAppFilePath MyAppReleaseDirectory + "\" + MyAppFileName
 #define MyAppVersion GetStringFileInfo(MyAppFilePath, "ProductVersion")
-#define MyAppPublisher "ShareX Team"
-#define MyAppURL "https://getsharex.com"
-#define MyAppId "82E6AC09-0FEF-4390-AD9F-0DD3F5561EFC"
+#define MyAppPublisher "DDDMUC (unofficial build)"
+#define MyAppURL "https://github.com/DDDMUC/ShareX"
+#define MyAppDirName "ShareX FD"
+#define MyAppId "1FD65E2B-5892-4D34-B9F1-351F179A0B5F"
 
 [Setup]
 AppCopyright=Copyright (c) 2007-2026 ShareX Team
@@ -26,12 +27,12 @@ AppMutex={#MyAppId}
 AppName={#MyAppName}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
-AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion} (framework-dependent)
 AppVersion={#MyAppVersion}
 ArchitecturesAllowed={#MyArchitecturesAllowed}
 ArchitecturesInstallIn64BitMode={#MyArchitecturesAllowed}
-DefaultDirName={commonpf}\{#MyAppName}
-DefaultGroupName={#MyAppName}
+DefaultDirName={commonpf}\{#MyAppDirName}
+DefaultGroupName={#MyAppDirName}
 DisableProgramGroupPage=yes
 LicenseFile={#MyAppRootDirectory}\LICENSE.txt
 MinVersion=10.0.14393
@@ -40,7 +41,7 @@ OutputDir={#MyAppOutputDirectory}
 PrivilegesRequired=none
 SolidCompression=yes
 UninstallDisplayIcon={app}\{#MyAppFileName}
-UninstallDisplayName={#MyAppName}
+UninstallDisplayName={#MyAppName} {#MyAppVersion} (framework-dependent)
 VersionInfoCompany={#MyAppPublisher}
 VersionInfoTextVersion={#MyAppVersion}
 VersionInfoVersion={#MyAppVersion}
@@ -112,11 +113,53 @@ Root: "HKCU"; Subkey: "SOFTWARE\Mozilla\NativeMessagingHosts\ShareX"; ValueType:
 Root: "HKCU"; Subkey: "Control Panel\Keyboard"; ValueType: dword; ValueName: "PrintScreenKeyForSnippingEnabled"; ValueData: "0"; Flags: uninsdeletevalue; Tasks: DisablePrintScreenKeyForSnippingTool
 
 [Code]
+function IsDotNetDesktopRuntimeInstalled: Boolean;
+var
+  SharedFxPath: String;
+  FindRec: TFindRec;
+  Found: Boolean;
+begin
+  Result := False;
+  SharedFxPath := ExpandConstant('{commonpf}\dotnet\shared\Microsoft.WindowsDesktop.App');
+  if DirExists(SharedFxPath) then
+  begin
+    Found := FindFirst(SharedFxPath + '\*', FindRec);
+    try
+      while Found do
+      begin
+        if ((FindRec.Attributes and 16) <> 0) and (Copy(FindRec.Name, 1, 3) = '10.') then
+        begin
+          Result := True;
+          Break;
+        end;
+        Found := FindNext(FindRec);
+      end;
+    finally
+      FindClose(FindRec);
+    end;
+  end;
+end;
+
+function InitializeSetup: Boolean;
+begin
+  Result := True;
+  if not IsDotNetDesktopRuntimeInstalled then
+  begin
+    if MsgBox('This framework-dependent build of ShareX requires the .NET 10 Desktop Runtime, which was not found on this computer.' #13#13 +
+      'You can download it from:' #13 +
+      'https://dotnet.microsoft.com/download/dotnet/10.0' #13#13 +
+      'Continue installation anyway?', mbConfirmation, MB_YESNO) = IDNO then
+    begin
+      Result := False;
+    end;
+  end;
+end;
+
 procedure InitializeWizard;
 begin
   if not IsAdmin then
   begin
-    WizardForm.DirEdit.Text := ExpandConstant('{userpf}\{#MyAppName}');
+    WizardForm.DirEdit.Text := ExpandConstant('{userpf}\{#MyAppDirName}');
   end;
 end;
 
