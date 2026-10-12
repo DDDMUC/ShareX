@@ -1,3 +1,18 @@
+# Unofficial modified build - not affiliated with the ShareX Team
+
+This repository is an **unofficial, modified version of [ShareX](https://github.com/ShareX/ShareX)**, synced with upstream `develop` at commit `63f7e3e` (2026-10-11) and modified on 2026-10-12.
+
+The only functional change is an opt-in **framework-dependent build for the x64 portable release**, which produces a ~117 MB portable zip instead of the ~199 MB self-contained one by using the .NET runtime already installed on the system rather than bundling it:
+
+- `ShareX.Setup`: new `CreatePortableFrameworkDependent` packaging job
+- `.github/workflows/build.yml`: new `build-framework-dependent` CI job
+
+The framework-dependent build requires the .NET 10 Desktop Runtime (`Microsoft.WindowsDesktop.App`) to be installed. Everything else is upstream ShareX, unmodified.
+
+Licensed under the GNU General Public License v3.0, same as ShareX - see [`LICENSE.txt`](./LICENSE.txt) and the `Licenses` directory for third-party notices. "ShareX" is a trademark of the ShareX Team; this repository is not endorsed by or affiliated with them.
+
+---
+
 <p align="center"><a href="https://getsharex.com"><img src="https://getsharex.com/img/ShareX_Banner.png" alt="ShareX Banner"/></a></p>
 <h3 align="center">Screen capture, file sharing and productivity tool</h3>
 <br>
