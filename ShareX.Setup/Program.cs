@@ -47,6 +47,7 @@ namespace ShareX.Setup
             CompileAppx = 1 << 6,
             CreateChecksumFile = 1 << 7,
             OpenOutputDirectory = 1 << 8,
+            CreatePortableFrameworkDependent = 1 << 9,
 
             Release = CreateSetup | CreatePortable | OpenOutputDirectory,
             Debug = CreateDebug | OpenOutputDirectory,
@@ -83,6 +84,8 @@ namespace ShareX.Setup
 
         private static string SetupPath => Path.Combine(OutputDir, $"ShareX-{AppVersion}-setup-{Platform}.exe");
         private static string PortableZipPath => Path.Combine(OutputDir, $"ShareX-{AppVersion}-portable-{Platform}.zip");
+        private static string PortableFrameworkDependentOutputDir => Path.Combine(OutputDir, "ShareX-portable-framework-dependent");
+        private static string PortableFrameworkDependentZipPath => Path.Combine(OutputDir, $"ShareX-{AppVersion}-portable-{Platform}-framework-dependent.zip");
         private static string DebugZipPath => Path.Combine(OutputDir, $"ShareX-{AppVersion}-debug-{Platform}.zip");
         private static string SteamUpdatesDir => Path.Combine(SteamOutputDir, "Updates");
         private static string SteamZipPath => Path.Combine(OutputDir, $"ShareX-{AppVersion}-Steam-{Platform}.zip");
@@ -119,6 +122,13 @@ namespace ShareX.Setup
                 CreateFolder(BinDir, PortableOutputDir, SetupJobs.CreatePortable);
 
                 CreateZipFile(PortableOutputDir, PortableZipPath);
+            }
+
+            if (Job.HasFlag(SetupJobs.CreatePortableFrameworkDependent))
+            {
+                CreateFolder(BinDir, PortableFrameworkDependentOutputDir, SetupJobs.CreatePortableFrameworkDependent);
+
+                CreateZipFile(PortableFrameworkDependentOutputDir, PortableFrameworkDependentZipPath);
             }
 
             if (Job.HasFlag(SetupJobs.CreateDebug))
@@ -373,7 +383,7 @@ namespace ShareX.Setup
                 }
             }
 
-            if (job == SetupJobs.CreatePortable)
+            if (job == SetupJobs.CreatePortable || job == SetupJobs.CreatePortableFrameworkDependent)
             {
                 FileHelpers.CreateEmptyFile(Path.Combine(destination, "Portable"));
             }
